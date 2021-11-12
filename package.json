@@ -1,0 +1,25 @@
+{
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "svelte-kit dev",
+		"build": "svelte-kit build --verbose",
+		"preview": "svelte-kit preview",
+		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
+		"format": "prettier --write --plugin-search-dir=. ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-vercel": "next",
+		"@sveltejs/kit": "next",
+		"eslint": "^8.2.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-svelte3": "^3.2.1",
+		"prettier": "^2.3.2",
+		"prettier-plugin-svelte": "^2.3.1",
+		"svelte": "^3.38.3"
+	},
+	"dependencies": {
+		"@supabase/supabase-js": "^1.27.0",
+		"cookie": "^0.4.1"
+	}
+}
