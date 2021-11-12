@@ -1,12 +1,15 @@
 # SvelteKit
 
-Example project using SvelteKit with the [SpaceX GraphQL API](https://api.spacex.land/graphql/), deployed to [Vercel](https://vercel.com).
+Example project using SvelteKit with the Supabase (Email and password) authentication.
 
-## Deploy Your Own
+Authentication is performed on the client side, but allows once authenticated to perform requests server side for SSR (each user request being authenticated through the supabase jwt).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fvercel%2Ftree%2Fmain%2Fexamples%2Fsveltekit&project-name=sveltekit-vercel&repository-name=sveltekit-vercel&demo-title=SvelteKit%20%2B%20Vercel&demo-description=SvelteKit%20app%20fetching%20data%20from%20the%20SpaceX%20GraphQL%20API.&demo-url=https%3A%2F%2Fsveltekit.examples.vercel.com%2F&demo-image=https%3A%2F%2Fsveltekit.examples.vercel.com%2Ftwitter.png)
-
-_Live Example: https://sveltekit.examples.vercel.com_
+The authentication flow:
+- Authentication with supabase-js library client side
+- onAuthStateChange method in the root routes __layout will post to the `
+auth.json` when the `SIGNED_IN` event is being processed (and same for `SIGNED_OUT`)
+- `auth.json` sets the jwt as a cookie in the response, allowing future requests to be authenticated (deletes the cookie in the case of sign out)
+- `hooks.js` will authenticate teh server side supabase client instance for each request and set the user detail in the `session`.
 
 ## Developing
 
@@ -17,12 +20,4 @@ npm run dev
 
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
-```
-
-## Building
-
-This uses the [Vercel Adapter](https://github.com/sveltejs/kit/tree/master/packages/adapter-vercel) for SvelteKit.
-
-```bash
-npm run build
 ```
