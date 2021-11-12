@@ -13,6 +13,13 @@ auth.json` when the `SIGNED_IN` event is being processed (and same for `SIGNED_O
 
 ## Developing
 
+You must create a `.env` file with your supabase credentials containing the following variables. You can find these two information in your supabase project dashboard.
+
+```
+VITE_SUPABASE_ANON_KEY="****"
+VITE_SUPABASE_URL="****"
+
+```
 Once you've created a project and installed dependencies with `npm install`, start a development server:
 
 ```bash
